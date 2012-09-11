@@ -116,9 +116,11 @@ URL:      www.noaesthetic.com
    <Variable name="body.background.gradient.tile" description="Body Gradient Tile" type="url"
        default="url(//www.blogblog.com/1kt/simple/body_gradient_tile_light.png)" value="none"/>
 
-   <Variable name="content.background.color.selector" description="Content Background Color Selector" type="string" default=".content-inner" value=".content-inner"/>
+  
+   <Variable name="content.background.color.selector" description="Content Background Color Selector" type="string" default=".main-outer" value=".main-outer"/>
+  
    <Variable name="content.padding" description="Content Padding" type="length" default="10px" value="10px"/>
-   <Variable name="content.padding.horizontal" description="Content Horizontal Padding" type="length" default="$(content.padding)" value="40px"/>
+   <Variable name="content.padding.horizontal" description="Content Horizontal Padding" type="length" default="$(content.padding)" value="10px"/>
    <Variable name="content.shadow.spread" description="Content Shadow Spread" type="length" default="40px" value="0"/>
    <Variable name="content.shadow.spread.webkit" description="Content Shadow Spread (WebKit)" type="length" default="5px" value="0"/>
    <Variable name="content.shadow.spread.ie" description="Content Shadow Spread (IE)" type="length" default="10px" value="0"/>
@@ -129,7 +131,7 @@ URL:      www.noaesthetic.com
    <Variable name="header.shadow.offset.left" description="Header Shadow Offset Left" type="length" default="-1px" value="0"/>
    <Variable name="header.shadow.offset.top" description="Header Shadow Offset Top" type="length" default="-1px" value="0"/>
    <Variable name="header.shadow.spread" description="Header Shadow Spread" type="length" default="1px" value="0"/>
-   <Variable name="header.padding" description="Header Padding" type="length" default="30px" value="0"/>
+   <Variable name="header.padding" description="Header Padding" type="length" default="0px" value="0"/>
 
    <Variable name="header.border.size" description="Header Border Size" type="length" default="1px" value="1px"/>
    <Variable name="header.bottom.border.size" description="Header Bottom Border Size" type="length" default="$(header.border.size)" value="0"/>
@@ -179,6 +181,9 @@ URL:      www.noaesthetic.com
 
 /* Content
 ----------------------------------------------- */
+#navbar{
+	display:none !important;
+}
 body {
   font: $(body.font);
   color: $(body.text.color);
@@ -250,6 +255,9 @@ $(content.background.color.selector) {
 .header-outer {
   background: $(header.background.color) $(header.background.gradient) repeat-x scroll 0 -400px;
   _background-image: none;
+  
+  float: left;
+  width: 300px;
 }
 
 .Header h1 {
@@ -268,7 +276,8 @@ $(content.background.color.selector) {
 }
 
 .header-inner .Header .titlewrapper {
-  padding: 22px $(header.padding);
+  /*padding: 22px $(header.padding);*/
+  padding:0;
 }
 
 .header-inner .Header .descriptionwrapper {
@@ -277,6 +286,11 @@ $(content.background.color.selector) {
 
 /* Tabs
 ----------------------------------------------- */
+.tabs-outer{
+  margin-top: 10px;
+  float: right;
+  width: 500px;
+}
 .tabs-inner .section:first-child {
   border-top: $(header.bottom.border.size) solid $(tabs.border.color);
 }
@@ -587,6 +601,77 @@ body.mobile .AdSense {
 .mobile .tabs-inner .PageList .widget-content .pagelist-arrow {
   border-$startSide: 1px solid $(tabs.border.color);
 }
+
+/* Nav2
+----------------------------------------------- */
+#nav2 {
+	/*margin:0 0 15px 15px !important;
+	margin: 0 0 7px 7px;*/
+	border-bottom: 3px solid #CC0000;
+}
+#nav2, #nav2 ul {
+	padding: 0;
+	float: left;
+	list-style: none;
+}
+#nav2 {
+	padding: 0;
+	font-size: 13px;
+	float: left;
+	width: 930px;
+	border-top: 1px solid #DDD;
+}
+#nav2 a {
+	display: block;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-right: 1px solid #DDD;
+}
+#nav2 li {
+	float: left;
+	line-height: 30px;
+}
+#nav2 li a:hover {
+	color: #fff;
+	text-decoration: none;
+	background: #CC0000;
+}
+#nav2 li ul {
+	position: absolute;
+	width: 15em;
+	left: -999em;
+	z-index: 99999;
+}
+#nav2 li:hover ul, #nav2 li.sfhover ul {
+	left: auto;
+	z-index: 1000;
+}
+#nav2 li ul li {
+	background: #FFF;
+	border-bottom: 1px solid #dedbd1;
+	border-left: 1px solid #dedbd1;
+	border-right: 1px solid #dedbd1;
+	line-height: 28px;
+	width: 15em;
+}
+#nav2 li:hover, #nav2 li.hover {
+	position: static;
+}
+#nav2 li ul ul {
+	margin: -29px 0 0 15em;
+}
+#nav2 li:hover ul ul, #nav2 li.sfhover ul ul {
+	left: -999em;
+}
+#nav2 li:hover ul, #nav2 li li:hover ul, #nav2 li.sfhover ul, #nav2 li li.sfhover ul {
+	left: auto;
+}
+#nav2 li:hover ul ul, #nav2 li:hover ul ul ul, #nav2 li.sfhover ul ul, #nav2 li.sfhover ul ul ul {
+	left: -999em;
+}
+#nav2 li:hover ul, #nav2 li li:hover ul, #nav2 li li li:hover ul, #nav2 li.sfhover ul, #nav2 li li.sfhover ul, #nav2 li li li.sfhover ul {
+	left: auto;
+}
 ]]></b:skin>
 
 		<b:template-skin>
@@ -598,7 +683,9 @@ body.mobile .AdSense {
       body {
         min-width: $(content.width);
       }
-
+      .content{
+		/*background: url("http://www.dns.com/images/body-bg.jpg") repeat-x scroll left top #EDEDED;*/
+	  }
       .content-outer, .content-fauxcolumn-outer, .region-inner {
         min-width: $(content.width);
         max-width: $(content.width);
@@ -657,12 +744,12 @@ body.mobile .AdSense {
 
 	<body expr:class='&quot;loading&quot; + data:blog.mobileClass'>
 
-		<!-- Blogger Navbar Start -->
+		<!-- ##Blogger Navbar Start## -->
 		<b:section class='navbar' id='navbar' maxwidgets='1'
 			showaddelement='no'>
 			<b:widget id='Navbar1' locked='true' title='Navbar' type='Navbar' />
 		</b:section>
-		<!-- Blogger Navbar Stop -->
+		<!-- ##Blogger Navbar Stop## -->
 
 		<b:if cond='data:blog.pageType == &quot;index&quot;'>
 			<div itemscope='itemscope' itemtype='http://schema.org/Blog'
@@ -692,7 +779,7 @@ body.mobile .AdSense {
 			</div>
 		</div>
 
-		<!-- Start Here -->
+		<!-- ##Start Here## -->
 		<div class='content'>
 			<div class='content-fauxcolumns'>
 				<div class='fauxcolumn-outer content-fauxcolumn-outer'>
@@ -711,12 +798,13 @@ body.mobile .AdSense {
 					</div>
 				</div>
 			</div>
-
+			<!--##Start Content-Outer##-->
 			<div class='content-outer'>
 				<div class='content-cap-top cap-top'>
 					<div class='cap-left' />
 					<div class='cap-right' />
 				</div>
+				
 				<div class='fauxborder-left content-fauxborder-left'>
 					<div class='fauxborder-right content-fauxborder-right' />
 					<div class='content-inner'>
@@ -730,10 +818,8 @@ body.mobile .AdSense {
 								<div class='fauxborder-left header-fauxborder-left'>
 									<div class='fauxborder-right header-fauxborder-right' />
 									<div class='region-inner header-inner'>
-										<b:section class='header' id='header' maxwidgets='1'
-											showaddelement='no'>
-											<b:widget id='Header1' locked='true' title='sys-conf (Header)'
-												type='Header' />
+										<b:section class='header' id='header' maxwidgets='1' showaddelement='no'>
+											<b:widget id='Header1' locked='true' title='sys-conf (Header)' type='Header' />
 										</b:section>
 									</div>
 								</div>
@@ -752,10 +838,10 @@ body.mobile .AdSense {
 							<div class='fauxborder-left tabs-fauxborder-left'>
 								<div class='fauxborder-right tabs-fauxborder-right' />
 								<div class='region-inner tabs-inner'>
-									<b:section class='tabs' id='crosscol' maxwidgets='1'
-										showaddelement='yes' />
-									<b:section class='tabs' id='crosscol-overflow'
-										showaddelement='no' />
+									<b:section class='tabs' id='crosscol' maxwidgets='1' showaddelement='yes' >
+										<b:widget id='PageList1' locked='false' title='Pages' type='PageList'/>
+									</b:section>
+									<b:section class='tabs' id='crosscol-overflow' showaddelement='no' />
 								</div>
 							</div>
 							<div class='tabs-cap-bottom cap-bottom'>
@@ -763,7 +849,30 @@ body.mobile .AdSense {
 								<div class='cap-right' />
 							</div>
 						</div>
-
+						<div style='clear: both' />
+						
+						<!-- ##Start Add New Nav## -->
+						<div class='navs-outer'>
+							<div class='navs-cap-top cap-top'>
+								<div class='cap-left' />
+								<div class='cap-right' />
+							</div>
+							<div class='fauxborder-left navs-fauxborder-left'>
+								<div class='fauxborder-right navs-fauxborder-right' />
+								<div class='region-inner navs-inner'>
+									<b:section class='navs' id='navs' maxwidgets='1' showaddelement='yes'>
+										<b:widget id='HTML1' locked='false' title='test' type='HTML'/>
+									</b:section>
+									<b:section class='navs' id='navs-overflow' showaddelement='no' />
+								</div>
+							</div>
+							<div class='navs-cap-bottom cap-bottom'>
+								<div class='cap-left' />
+								<div class='cap-right' />
+							</div>
+						</div>
+						<!-- ##Stop Add New Nav## -->
+						
 						<div class='main-outer'>
 							<div class='main-cap-top cap-top'>
 								<div class='cap-left' />
@@ -912,13 +1021,15 @@ body.mobile .AdSense {
 						<!-- content -->
 					</div>
 				</div>
+				
 				<div class='content-cap-bottom cap-bottom'>
 					<div class='cap-left' />
 					<div class='cap-right' />
 				</div>
 			</div>
+			<!--##Stop Content-Outer##-->
 		</div>
-		<!-- Stop Here -->
+		<!-- ##Stop Here## -->
 
 		<script type='text/javascript'>
 			window.setTimeout(function() {

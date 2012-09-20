@@ -338,6 +338,7 @@ $(content.background.color.selector) {
 ----------------------------------------------- */
 .main-outer {
   border-top: $(main.border.width) solid $(body.rule.color);
+  z-index: -1;
 }
 
 .fauxcolumn-left-outer .fauxcolumn-inner {
@@ -604,39 +605,38 @@ body.mobile .AdSense {
 
 /* Nav2
 ----------------------------------------------- */
+#navs, #navs .widget{
+	padding:0;
+	margin:0;
+}
 #nav2 {
-	/*margin:0 0 15px 15px !important;
-	margin: 0 0 7px 7px;*/
+	border-top: 1px solid #DDD;
 	border-bottom: 3px solid #CC0000;
-}
-#nav2, #nav2 ul {
-	padding: 0;
-	float: left;
+	overflow: hidden;
 	list-style: none;
-}
-#nav2 {
 	padding: 0;
 	font-size: 13px;
-	float: left;
-	width: 930px;
-	border-top: 1px solid #DDD;
 }
 #nav2 a {
 	display: block;
 	padding-left: 15px;
 	padding-right: 15px;
-	border-right: 1px solid #DDD;
 }
 #nav2 li {
 	float: left;
 	line-height: 30px;
+	padding: 0;
+	border-right: 1px solid #DDD;
 }
 #nav2 li a:hover {
 	color: #fff;
 	text-decoration: none;
 	background: #CC0000;
 }
+
 #nav2 li ul {
+	padding: 0;
+	list-style: none;
 	position: absolute;
 	width: 15em;
 	left: -999em;
@@ -650,7 +650,6 @@ body.mobile .AdSense {
 	background: #FFF;
 	border-bottom: 1px solid #dedbd1;
 	border-left: 1px solid #dedbd1;
-	border-right: 1px solid #dedbd1;
 	line-height: 28px;
 	width: 15em;
 }
